@@ -6,7 +6,8 @@ import Contact from "./Contact";
 import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
 import ConfirmSignUp from "./Auth/ConfirmSignUp";
-import Profile from "./Auth/UserProfile";
+import UserProfile from "./Auth/UserProfile";
+import MyToken from "./MyToken";
 import ForgotPassword from "./Auth/ForgotPassword";
 import ResetPassword from "./Auth/ResetPassword";
 import RouteGuard from "./RouteGuard";
@@ -21,16 +22,16 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
               <Link to="/login">Login</Link>
             </li>
             <li>
               <Link to="/contact">Contact</Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/userprofile">User Profile</Link>
+            </li>
+            <li>
+              <Link to="/mytoken">My Token</Link>
             </li>
           </ul>
         </nav>
@@ -38,7 +39,6 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<Profile />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
@@ -47,10 +47,18 @@ function App() {
             <Route path="/confirm-signup" element={<ConfirmSignUp />} />
 
             <Route
-              path="/profile"
+              path="/userprofile"
               element={
                 <RouteGuard>
-                  <Profile />
+                  <UserProfile />
+                </RouteGuard>
+              }
+            />
+            <Route
+              path="/mytoken"
+              element={
+                <RouteGuard>
+                  <MyToken />
                 </RouteGuard>
               }
             />
