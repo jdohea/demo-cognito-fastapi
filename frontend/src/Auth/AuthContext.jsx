@@ -7,6 +7,7 @@ function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [accessToken, setAccessToken] = useState(null);
+  const [idToken, setIdToken] = useState(null);
 
   const getCurrentUser = async () => {
     try {
@@ -30,6 +31,20 @@ function AuthProvider({ children }) {
     try {
       const accessToken = await auth.getAccessToken();
       setAccessToken(accessToken);
+      // log accessToken
+      console.log("accessToken", accessToken);
+    }
+    catch (err) {
+      console.log(err);
+    }
+  };   
+
+  const getIdToken = async () => {
+    try {
+      const idToken = await auth.getIdToken();
+      setIdToken(idToken);
+      // log idToken
+      console.log("idToken", idToken);
     }
     catch (err) {
       console.log(err);
@@ -41,18 +56,21 @@ function AuthProvider({ children }) {
     await auth.signIn(username, password);
     await getCurrentUser();
     await getAccessToken();
+    await getIdToken();
   };
 
   const signOut = async () => {
     auth.signOut();
     setUser(null);
     setAccessToken(null);
+    setIdToken(null);
   };
 
   const authValue = {
     user,
     isLoading,
     accessToken,
+    idToken,
     signIn,
     signOut,
   };

@@ -3,3 +3,8 @@ requests
 python-jose
 python-dotenv
 uvicorn
+fastapi 
+uvicorn 
+boto3 
+pydantic-settings 
+email_validator
