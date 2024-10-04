@@ -16,7 +16,7 @@ async def secure() -> str:
 
 @app.get("/not_secure")
 async def not_secure() -> str:
-    return "not secure !!
+    return "not secure !!"
 
 
 app.include_router(user_router, prefix="/user", dependencies=[Depends(auth)])
