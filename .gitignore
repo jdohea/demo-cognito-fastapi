@@ -31,3 +31,6 @@ dist-ssr
 test_code/*
 .terraform
 .terraform/*
+
+__pycache__
+__pycache__/*

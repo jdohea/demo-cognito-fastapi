@@ -171,3 +171,17 @@ export async function getAccessToken() {
     });
   });
 }
+
+export async function getIdToken() {
+  const cognitoUser = userPool.getCurrentUser();
+  if (!cognitoUser) return null;
+  return new Promise((resolve, reject) => {
+    cognitoUser.getSession((err, session) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve(session.getIdToken().getJwtToken());
+    });
+  });
+}

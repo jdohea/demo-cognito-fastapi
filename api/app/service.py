@@ -10,13 +10,13 @@ auth = JWTBearer(jwks)
 
 
 @app.get("/secure", dependencies=[Depends(auth)])
-async def secure() -> bool:
+async def secure() -> str:
     return True
 
 
 @app.get("/not_secure")
-async def not_secure() -> bool:
-    return True
+async def not_secure() -> str:
+    return "not secure !!
 
 
 app.include_router(user_router, prefix="/user", dependencies=[Depends(auth)])
