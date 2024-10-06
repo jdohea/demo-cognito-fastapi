@@ -1,4 +1,4 @@
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Any
 
 from fastapi import HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -17,8 +17,8 @@ class JWKS(BaseModel):
 
 class JWTAuthorizationCredentials(BaseModel):
     jwt_token: str
-    header: Dict[str, str]
-    claims: Dict[str, str]
+    header: Dict[str, Any]
+    claims: Dict[str, Any]
     signature: str
     message: str
 

@@ -10,7 +10,7 @@ auth = JWTBearer(jwks)
 
 
 @app.get("/secure", dependencies=[Depends(auth)])
-async def secure() -> str:
+async def secure() -> bool:
     return True
 
 
