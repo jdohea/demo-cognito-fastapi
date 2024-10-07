@@ -1,5 +1,5 @@
 from typing import Union
-from fastapi import FastAPI
+from fastapi import FastAPI, Header, HTTPException
 from mangum import Mangum
 from fastapi.responses import JSONResponse
 import uvicorn
@@ -9,8 +9,8 @@ app = FastAPI()
 handler = Mangum(app)
 
 @app.get("/")
-def read_root():
-   return {"Welcome to": "My first FastAPI depolyment using Docker image"}
+def read_root(authorization: str = Header(None)):
+   return {"message": "Authorization header, ", "token": authorization}
 
 @app.get("/{text}")
 def read_item(text: str):
